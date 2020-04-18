@@ -17,8 +17,6 @@
 "First binding"
 ;; Logitech Front Shoulder Button
 (xbindkey-function '("b:9") b9-second-binding)
-;; Logitech Rear Shoulder Button
-(xbindkey-function '("b:8") b8-second-binding)
 )
 
 
@@ -61,35 +59,6 @@
 (if (= actionperformed 0) (run-command "zenity --info --title=hi --text=Button9ReleaseEvent &"))
 (reset-first-binding)))
 (grab-all-keys))
-
-(define (b8-second-binding)
-"Rear Shoulder Button Extra Functions"
-(ungrab-all-keys)
-(remove-all-keys)
-
-;; Scroll Up
-(xbindkey-function '("b:4")
-                (lambda ()
-;; Emulate Alt+Shift+Tab (previous window)
-                (run-command "xdotool keydown alt keydown shift key Tab keyup alt keyup shift")
-		(set! actionperformed 1)
-))
-
-;; Scroll Down
-(xbindkey-function '("b:5")
-                (lambda ()
-;; Emulate Alt+Tab (next window)
-                (run-command "xdotool keydown alt key Tab keyup alt")
-		(set! actionperformed 1)
-))
-
-(xbindkey-function '(release "b:8") (lambda ()
-;; Perform Action if Button 8 is pressed and released by itself
-     (if (= actionperformed 0) (run-command "zenity --info --title=hi --text=Button8ReleaseEvent &"))
-(reset-first-binding)
-))
-(grab-all-keys)
-)
 
 ;; (debug)
 (first-binding)
