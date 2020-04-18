@@ -54,7 +54,7 @@
 
 (xbindkey-function '(release "b:9") (lambda ()
 ;; Perform Action if Button 8 is pressed and released by itself
-(if (= actionperformed 0) (run-command "xdotool key Super&"))
+(if (= actionperformed 0) (run-command "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'&"))
 (reset-first-binding)))
 (grab-all-keys))
 
