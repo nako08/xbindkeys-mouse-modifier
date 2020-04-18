@@ -41,22 +41,20 @@
 ;; Scroll Up
 (xbindkey-function '("b:4")
                 (lambda ()
-;; Emulate Ctrl+Alt+Up (Workspace Up)
-                (run-command "xdotool keydown ctrl keydown alt key Up keyup ctrl keyup alt&")
+                (run-command "xdotool keydown Super key Up keyup Super&")
 		(set! actionperformed 1)
 ))
 
 ;; Scroll Down
 (xbindkey-function '("b:5")
                 (lambda ()
-;; Emulate Ctrl+Alt+Down (Workspace Down)
-                (run-command "xdotool keydown ctrl keydown alt key Down keyup ctrl keyup alt&")
+                (run-command "xdotool keydown Super key Down keyup Super&")
 		(set! actionperformed 1)
 ))
 
 (xbindkey-function '(release "b:9") (lambda ()
 ;; Perform Action if Button 8 is pressed and released by itself
-(if (= actionperformed 0) (run-command "zenity --info --title=hi --text=Button9ReleaseEvent &"))
+(if (= actionperformed 0) (run-command "xdotool key Super&"))
 (reset-first-binding)))
 (grab-all-keys))
 
