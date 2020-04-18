@@ -58,7 +58,7 @@
 
 (xbindkey-function '(release "b:9") (lambda ()
 ;; Perform Action if Button 8 is pressed and released by itself
-(if (= actionperformed 0) (run-command "zenity --info --title=hi --text=Button9ReleaseEvent &"))
+(if (= actionperformed 0) (run-command "xdotool key Super&"))
 (reset-first-binding)))
 (grab-all-keys))
 
